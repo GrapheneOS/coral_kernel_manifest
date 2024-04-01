@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-  <remote  name="aosp"
-    fetch="https://android.googlesource.com/" />
-  <remote  name="grapheneos"
-    fetch="https://github.com/GrapheneOS/"
-    revision="refs/heads/13" />
-  <default revision="refs/tags/android-13.0.0_r0.130"
-    remote="aosp" sync-j="4" />
-
-  <project path="private/msm-google" name="kernel_msm-coral" groups="partner" remote="grapheneos">
-    <linkfile dest="build.config" src="build.config.no-cfi"/>
-    <linkfile dest="build_floral.sh" src="build_floral.sh"/>
-    <linkfile dest="build_sunfish.sh" src="build_sunfish.sh"/>
+  <remote name="aosp" fetch="https://android.googlesource.com/"/>
+  <remote name="grapheneos" fetch="https://github.com/GrapheneOS/" revision="refs/tags/2024040100-sunfish"/>
+  
+  <default remote="aosp" revision="refs/tags/android-13.0.0_r0.130" sync-j="4"/>
+  
+  <project name="kernel/msm-modules/data-kernel" path="private/msm-google-modules/data-kernel" revision="faf33e445d59b22500d2251a667adffd6f10401b" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel/msm-modules/fts_touch" path="private/msm-google-modules/touch/fts/floral" revision="48d36bbf61fcdc6addb02df2f625554c66dbfa11" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel/msm-modules/fts_touch_s5" path="private/msm-google-modules/touch/fts/sunfish" revision="0e5e23adf847c5e54442e471db5e4ff1b3192be4" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel/msm-modules/qca-wfi-host-cmn" path="private/msm-google-modules/wlan/qca-wifi-host-cmn" revision="d7cc06c530ca26a76e43489b79c8bc15252b816e" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel/msm-modules/qcacld" path="private/msm-google-modules/wlan/qcacld-3.0" revision="dfd3a64264a1546bd939cdea8d0d34d4a4fc788b" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel/msm-modules/wlan-fw-api" path="private/msm-google-modules/wlan/fw-api" revision="2b33b7b3680784bc142edd960f29ca49e52fa5c2" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner"/>
+  <project name="kernel_build-coral" path="build" remote="grapheneos" revision="afffbe1a4874b6c9b378a35d3cbbfd61ed80e1f5" upstream="refs/tags/2024040100-sunfish" dest-branch="refs/tags/2024040100-sunfish" groups="partner"/>
+  <project name="kernel_msm-coral" path="private/msm-google" remote="grapheneos" revision="4d19a21e7fa70d511e3edc9825b52f0472983a19" upstream="refs/tags/2024040100-sunfish" dest-branch="refs/tags/2024040100-sunfish" groups="partner">
+    <linkfile src="build.config.no-cfi" dest="build.config"/>
+    <linkfile src="build_floral.sh" dest="build_floral.sh"/>
+    <linkfile src="build_sunfish.sh" dest="build_sunfish.sh"/>
   </project>
-  <project path="private/msm-google/techpack/audio" name="kernel_msm-extra-coral" groups="partner" remote="grapheneos"/>
-  <project path="private/msm-google-modules/data-kernel" name="kernel/msm-modules/data-kernel" groups="partner"/>
-  <project path="private/msm-google-modules/wlan/qca-wifi-host-cmn" name="kernel/msm-modules/qca-wfi-host-cmn" groups="partner"/>
-  <project path="private/msm-google-modules/wlan/qcacld-3.0" name="kernel/msm-modules/qcacld" groups="partner"/>
-  <project path="private/msm-google-modules/wlan/fw-api" name="kernel/msm-modules/wlan-fw-api" groups="partner"/>
-  <project path="private/msm-google-modules/touch/fts/floral" name="kernel/msm-modules/fts_touch" groups="partner"/>
-  <project path="private/msm-google-modules/touch/fts/sunfish" name="kernel/msm-modules/fts_touch_s5" groups="partner"/>
-  <project path="build" name="kernel_build-coral" groups="partner" remote="grapheneos"/>
-  <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" groups="partner" clone-depth="1" />
-  <project path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" groups="partner" clone-depth="1" />
-  <project path="prebuilts-master/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="partner" clone-depth="1" />
-  <project path="prebuilts-master/misc" name="platform/prebuilts/misc" groups="partner" clone-depth="1" />
+  <project name="kernel_msm-extra-coral" path="private/msm-google/techpack/audio" remote="grapheneos" revision="66083d870b3f754385705e22fcd7dc33dabeffaa" upstream="refs/tags/2024040100-sunfish" dest-branch="refs/tags/2024040100-sunfish" groups="partner"/>
+  <project name="platform/prebuilts/clang/host/linux-x86" path="prebuilts-master/clang/host/linux-x86" revision="537e01a6ff78760ee5b69597efdbc47bc721058d" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner" clone-depth="1"/>
+  <project name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" revision="606f80986096476912e04e5c2913685a8f2c3b65" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner" clone-depth="1"/>
+  <project name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9" revision="b0c6a654327ca8796bed1e61dffcf523d04dceaa" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner" clone-depth="1"/>
+  <project name="platform/prebuilts/misc" path="prebuilts-master/misc" revision="f11ff29241658fc703bf36fcbc3c48af12535dc9" upstream="refs/tags/android-13.0.0_r0.130" dest-branch="refs/tags/android-13.0.0_r0.130" groups="partner" clone-depth="1"/>
 </manifest>
